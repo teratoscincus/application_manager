@@ -25,4 +25,4 @@ class Application(models.Model):
         )
 
     def __str__(self) -> str:
-        return f"({self.pk}) {self.title} @ {self.Institute}"
+        return f"({self.pk}) {self.title} @ {self.institute}"
