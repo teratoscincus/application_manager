@@ -14,8 +14,8 @@ class Application(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=225)
     institute = models.ForeignKey(Institute, on_delete=models.PROTECT)
-    applied = models.BooleanField(default=False)
-    application_deadline = models.DateField(blank=True, null=True)
+    has_applied = models.BooleanField(default=False)
+    deadline = models.DateField(blank=True, null=True)
     url = models.URLField(blank=True, null=True)
 
     class Meta:
