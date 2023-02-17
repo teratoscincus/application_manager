@@ -1,0 +1,21 @@
+{% extends "core/base.html" %}
+
+{% block title %}Applications{% endblock %}
+
+{% block content %}
+<h1>Applications overview</h1>
+
+<h2>Applications<span><a href="{% url 'applications:add-application' %}">New</a></span></h2>
+{% if applications %}
+{% for application in applications %}
+<section>
+  <h2>{{ application.title }}<span><a href="{% url 'applications:edit-application' %}">Edit</a></span></h2>
+  <p>{{ application.school.name }}</p>
+  <p>Deadline: {{ application.deadline }} | Applied: {{ application.applied }}</p>
+  <p>{{ application.url }}</p>
+</section>
+{% endfor %}
+{% else %}
+<p>No applications added</p>
+{% endif %}
+{% endblock %}

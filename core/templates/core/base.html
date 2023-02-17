@@ -1,0 +1,33 @@
+{% load django_bootstrap5 %}
+{% load fontawesome_5 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  {% fontawesome_5_static %}
+  <link rel="stylesheet" href="{% static 'core/style.css' %}">
+  <title>{% block title %}{% endblock %} | Application Manager</title>
+</head>
+
+<body class="min-vh-100 d-flex flex-column">
+  <header>
+    {% include "core/_header.html" %}
+  </header>
+
+  <main class="mb-auto">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    {% include "core/_footer.html" %}
+  </footer>
+</body>
+
+</html>

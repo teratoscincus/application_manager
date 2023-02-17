@@ -1,0 +1,20 @@
+{% extends "core/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}Log in{% endblock %}
+
+{% block content %}
+<form method="POST" action="{% url 'users:login' %}">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  <button name="submit" class="">Log in</button>
+
+  <input type="hidden" name="next" value="{% url 'core:index' %}">
+</form>
+
+<section>
+  <h3>Not a member?</h3>
+  <p>Register here</p>
+  <a class="nav-link" href="{% url 'users:register' %}">Register</a>
+</section>
+{% endblock content %}

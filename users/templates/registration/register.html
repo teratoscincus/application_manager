@@ -1,0 +1,14 @@
+{% extends "core/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}Register Account{% endblock %}
+
+{% block content %}
+<form method="POST" asction="{% url 'users:register' %}">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  <button name="submit" class="">Register</button>
+
+  <input type="hidden" name="next" value="{% url 'core:index' %}">
+</form>
+{% endblock content %}

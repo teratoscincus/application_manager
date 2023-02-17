@@ -1,0 +1,19 @@
+{% extends "core/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}Edit Application{% endblock %}
+
+{% block content %}
+<h1>Application</h1>
+
+<form method="POST" action="{% url 'applications:edit-application' %}">
+  <h2>Edit application
+    <span><a href="{% url 'applications:applications' %}">Back</a></span>
+  </h2>
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  <button name="submit" class="">Save</button>
+
+  <input type="hidden" name="next" value="{% url 'core:index' %}">
+</form>
+{% endblock %}

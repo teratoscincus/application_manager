@@ -1,0 +1,16 @@
+{% extends "core/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Application Manager</h1>
+<article>
+  <h2>
+    <a href="{% url 'applications:applications' %}">
+      Applications
+    </a>
+  </h2>
+  <p>Keep track of your applications</p>
+</article>
+
+{% endblock %}
