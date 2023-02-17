@@ -7,14 +7,24 @@
 
 <h2>Applications<span><a href="{% url 'applications:add-application' %}">New</a></span></h2>
 {% if applications %}
-{% for application in applications %}
-<section>
-  <h2>{{ application.title }}<span><a href="{% url 'applications:edit-application' %}">Edit</a></span></h2>
-  <p>{{ application.school.name }}</p>
-  <p>Deadline: {{ application.deadline }} | Applied: {{ application.has_applied }}</p>
-  <p>{{ application.url }}</p>
-</section>
-{% endfor %}
+<table>
+  <tr>
+    <th></th>
+    <th>Title</th>
+    <th>Institute</th>
+    <th>Applied</th>
+    <th>Deadline</th>
+  </tr>
+  {% for application in applications %}
+  <tr>
+    <th><a href="{% url 'applications:edit-application' %}">Edit</a></th>
+    <th><a href="{{ application.url }}">{{ application.title }}</a></th>
+    <th>{{ application.institute.name }}</th>
+    <th>{{ application.has_applied }}</th>
+    <th>{{ application.deadline }}</th>
+  </tr>
+  {% endfor %}
+</table>
 {% else %}
 <p>No applications added</p>
 {% endif %}
