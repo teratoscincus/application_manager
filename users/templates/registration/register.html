@@ -4,7 +4,7 @@
 {% block title %}Register Account{% endblock %}
 
 {% block content %}
-<form method="POST" asction="{% url 'users:register' %}">
+<form method="POST" action="{% url 'users:register' %}">
   {% csrf_token %}
   {% bootstrap_form form %}
   <button name="submit" class="">Register</button>

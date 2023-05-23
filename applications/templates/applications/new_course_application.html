@@ -13,7 +13,5 @@
   {% csrf_token %}
   {% bootstrap_form form %}
   <button name="submit" class="">Save</button>
-
-  <input type="hidden" name="next" value="{% url 'core:index' %}">
 </form>
 {% endblock %}

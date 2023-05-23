@@ -5,8 +5,11 @@
 {% block content %}
 <h1>Applications overview</h1>
 
-<h2>Applications<span><a href="{% url 'applications:add-application' %}">New</a></span></h2>
-{% if applications %}
+<h2>Applications<span class="inline-link"><a href="{% url 'applications:add-application' %}">New</a></span></h2>
+<p><a href="{% url 'applications:admission-tests' %}">Admission tests</a></p>
+<section>
+<h3>Not applied</h3>
+{% if applications.not_applied %}
 <table>
   <tr>
     <th></th>
@@ -15,17 +18,44 @@
     <th>Applied</th>
     <th>Deadline</th>
   </tr>
-  {% for application in applications %}
+  {% for application in applications.not_applied %}
   <tr>
-    <th><a href="{% url 'applications:edit-application' %}">Edit</a></th>
-    <th><a href="{{ application.url }}">{{ application.title }}</a></th>
-    <th>{{ application.institute.name }}</th>
-    <th>{{ application.has_applied }}</th>
-    <th>{{ application.deadline }}</th>
+    <td><a href="{% url 'applications:edit-application' application.pk %}">Edit {{ forloop.counter }})</a></td>
+    <td><a href="{{ application.url }}">{{ application.title }}</a></td>  
+    <td>{{ application.institute.name }}</td>
+    <td>{{ application.has_applied }}</td>
+    <td>{{ application.deadline }}</td>
   </tr>
   {% endfor %}
 </table>
 {% else %}
-<p>No applications added</p>
+<p>No unfinished applications</p>
 {% endif %}
+</section>
+
+<section>
+<h3>Finished applications</h3>
+{% if applications.has_applied %}
+<table>
+  <tr>
+    <th></th>
+    <th>Title</th>
+    <th>Institute</th>
+    <th>Applied</th>
+    <th>Deadline</th>
+  </tr>
+  {% for application in applications.has_applied %}
+  <tr>
+    <td><a href="{% url 'applications:edit-application' application.pk %}">Edit ({{ forloop.counter }})</a></td>
+    <td><a href="{{ application.url }}">{{ application.title }}</a></td>  
+    <td>{{ application.institute.name }}</td>
+    <td>{{ application.has_applied }}</td>
+    <td>{{ application.deadline }}</td>
+  {% endfor %}
+</table>
+{% else %}
+<p>No finished applications</p>
+{% endif %}
+</section>
+
 {% endblock %}

@@ -1,0 +1,17 @@
+{% extends "core/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}Edit Admission test{% endblock %}
+
+{% block content %}
+<h1>Admission test</h1>
+
+<form method="POST" action="{% url 'applications:edit-admission-test' object.pk %}">
+    <h2>Edit application<span>{{ object.pk }}</span>
+    <span><a href="{% url 'applications:applications' %}">Back</a></span>
+  </h2>
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  <button name="submit" class="button button-submit">Save</button>
+</form>
+{% endblock %}

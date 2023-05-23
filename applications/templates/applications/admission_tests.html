@@ -1,0 +1,91 @@
+{% extends "core/base.html" %}
+
+{% block title %}Admission tests{% endblock %}
+
+{% block content %}
+<h1>Admission tests overview</h1>
+
+<h2>Admission tests</h2>
+{% if admission_tests.tba %}
+<section>
+  <h3>Admission tests start TBA</h3>
+  <table>
+    <tr>
+      <th></th>
+      <th>Institute</th>
+      <th>Done</th>
+      <th>Start</th>
+      <th>Deadline</th>
+      <th>Notes</th>
+    </tr>
+    {% for admission_test in admission_tests.tba %}
+    <tr>
+      <td><a href="{% url 'applications:edit-admission-test' admission_test.pk %}">Edit {{ forloop.counter }})</a></td>
+      <td>{{ admission_test.application.institute.name }}</td>
+      <td>{{ admission_test.done }}</td>
+      <td>{{ admission_test.start }}</td>
+      <td>{{ admission_test.deadline }}</td>
+      <td>{{ admission_test.notes }}</td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+  </table>
+
+  <section>
+    <h3>Unfinished admission tests</h3>
+    {% if admission_tests.not_done %}
+    <table>
+      <tr>
+        <th></th>
+        <th>Institute</th>
+        <th>Done</th>
+        <th>Start</th>
+        <th>Deadline</th>
+        <th>Notes</th>
+      </tr>
+      {% for admission_test in admission_tests.not_done %}
+      <tr>
+        <td><a href="{% url 'applications:edit-admission-test' admission_test.pk %}">Edit {{ forloop.counter }})</a>
+        </td>
+        <td>{{ admission_test.application.institute.name }}</td>
+        <td>{{ admission_test.done }}</td>
+        <td>{{ admission_test.start }}</td>
+        <td>{{ admission_test.deadline }}</td>
+        <td>{{ admission_test.notes }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+    <p>No unfinished admission tests</p>
+    {% endif %}
+  </section>
+
+  <section>
+    <h3>Finished admission tests</h3>
+    {% if admission_tests.is_done %}
+    <table>
+      <tr>
+        <th></th>
+        <th>Institute</th>
+        <th>Done</th>
+        <th>Start</th>
+        <th>Deadline</th>
+        <th>Notes</th>
+      </tr>
+      {% for admission_test in admission_tests.is_done %}
+      <tr>
+        <td><a href="{% url 'applications:edit-admission-test' admission_test.pk %}">Edit {{ forloop.counter }})</a>
+        </td>
+        <td>{{ admission_test.application.institute.name }}</td>
+        <td>{{ admission_test.done }}</td>
+        <td>{{ admission_test.start }}</td>
+        <td>{{ admission_test.deadline }}</td>
+        <td>{{ admission_test.notes }}</td>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No finished admission tests</p>
+    {% endif %}
+  </section>
+
+  {% endblock %}
