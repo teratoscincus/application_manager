@@ -1,0 +1,122 @@
+/* VARIABLES */
+
+:root {
+  --bg: #282828;
+  --bg-light: #504945;
+  --fg: #f1ebbb;
+  --accent-primary: #c69749;
+  --accent-dim: #735f32;
+}
+
+/* GENERAL */
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid var(--bg);
+  transition: ease 0.35s;
+}
+
+a:hover,
+a:focus,
+a:focus-visible {
+  color: var(--accent-primary);
+  border-bottom: 1px solid var(--accent-primary);
+}
+
+.inline-link {
+  margin-left: 1rem;
+}
+
+.button {
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  transition: ease 0.35s;
+}
+
+/* Applications overview */
+
+/* NAVBAR */
+
+nav.navbar {
+  border-bottom: 1px solid var(--bg-light);
+}
+
+/* Logo */
+a.site-logo {
+  color: var(--accent-primary);
+  /* Override general link rules */
+  border-bottom: none;
+}
+
+a.site-logo:hover,
+a.site-logo:focus,
+a.site-logo:focus-visible {
+  /* Override general link rules */
+  border-bottom: none;
+}
+
+/* Nav links */
+ul.navbar-nav {
+  margin: 0.5em 0 0.5em 0;
+  gap: 1.5em;
+}
+
+a.n-link {
+  color: var(--accent-dim);
+  border-top: 1px solid var(--bg);
+  border-bottom: 1px solid var(--bg);
+  padding: 0.5em;
+}
+
+a.n-link:hover,
+a.n-link:focus,
+a.n-link:focus-visible {
+  color: var(--accent-primary);
+  border-bottom: 1px solid var(--accent-dim);
+}
+
+/* FORMS */
+
+input.form-control,
+input.form-check-input,
+select.form-select {
+  background: var(--bg-light);
+  color: var(--accent-primary);
+  border: 1px solid var(--accent-dim);
+}
+
+input.form-control:focus,
+input.form-check-input:focus,
+select.form-select:focus {
+  background: var(--bg-light);
+  color: var(--accent-primary);
+  border: 1px solid var(--accent-primary);
+  box-shadow: none;
+}
+
+.button-submit {
+  background: var(--accent-dim);
+  color: var(--fg);
+}
+
+.button-submit:focus,
+.button-submit:hover {
+  background: var(--accent-primary);
+  color: var(--bg);
+}
+
+table {
+  margin: 0 0 1rem 2rem;
+  width: 60vw;
+}
+
+tr {
+  border-bottom: 1px solid var(--accent-dim);
+}
